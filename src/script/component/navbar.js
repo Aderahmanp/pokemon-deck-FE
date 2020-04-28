@@ -1,8 +1,11 @@
+
+
 class NavBar extends HTMLElement {
     constructor() {
         super();
         this.shadowDOM = this.attachShadow({mode: "open"})
     }
+    
 
     connectedCallback() {
         this.render();
@@ -48,6 +51,21 @@ class NavBar extends HTMLElement {
           .favorite {
               margin-right:15%;
           }
+
+          .topnav .search-container button {
+            float: right;
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background: #ddd;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+          }
+          
+          .topnav .search-container button:hover {
+            background: #ccc;
+          }
           
           @media screen and (max-width: 600px) {
             .topnav a:not(:first-child) {display: none;}
@@ -69,12 +87,29 @@ class NavBar extends HTMLElement {
               display: block;
               text-align: left;
             }
+
+            .topnav .search-container {
+                float: none;
+              }
+              .topnav a, .topnav input[type=text], .topnav .search-container button {
+                float: none;
+                display: block;
+                text-align: left;
+                width: 100%;
+                margin: 0;
+                padding: 14px;
+              }
+              .topnav input[type=text] {
+                border: 1px solid #ccc;  
+              }
+            }
+
           }
           </style>
 
           <div class="topnav" id="myTopnav">
             <a href="#home" >Digimon</a>
-            <a href="#favorite" class="favorite">Favotite</a>
+            <a href="#favorite" class="favorite">Favorite</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i>
             </a>
