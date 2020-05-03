@@ -76,10 +76,10 @@ function main() {
                </style>
      
                <div class="card card-digimon">
-               <img id="digimonImg" value=${digimon.img} class="digimon-img" src="${digimon.img}" style="width:100%">
+               <img id="digimonImg"  class="digimon-img" src="${digimon.img}" style="width:100%">
                <div class="container">
-                 <p class="text-center" id="digimonLevel" class="digimon-level" value=${digimon.level}">${digimon.level}</p> 
-                 <h3 class="text-center" id="digimonName" class="digimon-" value=${digimon.name}">${digimon.name}</h3> 
+                 <p class="text-center"  class="digimon-level" value=${digimon.level}">${digimon.level}</p> 
+                 <h3 class="text-center" class="digimon-" value=${digimon.name}">${digimon.name}</h3> 
                   </div>
                 
                <button id="${digimon.level}" name="${digimon.name}" value="${digimon.img}" type="button" class="btn btn-secondary button-create">Favorite</button>
@@ -90,9 +90,6 @@ function main() {
 
 
       const buttons = document.querySelectorAll(".card-digimon");
-        const digimonName = document.getElementById("digimonName");
-        const digimonImg = document.getElementById("digimonImg")
-        const digimonLevel = document.getElementById("digimonLevel");
       buttons.forEach(button => {
         button.addEventListener("click", event => {
           const digimon = {
@@ -101,29 +98,12 @@ function main() {
                   level:event.target.id 
                 
           }
-          // const digimon = event.target.id
           console.log(digimon)
           
           createDigimon(digimon)
         })
       })
       }
-
-      // document.addEventListener = ("DOMContentLoaded", () => {
-      //   const digimonName = document.querySelector("#digimonName");
-      //   const digimonImg = document.querySelector("#digimonImg");
-      //   const digimonLevel = document.querySelector("#digimonLevel");
-      //   const buttonSave = document.querySelector("#buttonSave")
-
-      //   buttonSave.addEventListener("click", function () {
-      //     const digimon = {
-      //       name: digimonName.value,
-      //       img: digimonImg.value,
-      //       level: digimonLevel.value  
-      //     };
-      //     createDigimon(digimon)
-      //   })
-      // })
 
       const showResponseMessage = (message = "Check your internet connection") => {
         alert(message);
