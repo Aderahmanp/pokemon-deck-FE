@@ -108,8 +108,8 @@ class NavBar extends HTMLElement {
           </style>
 
           <div class="topnav" id="myTopnav">
-            <a href="#home" >Digimon</a>
-            <a href="#favorite" class="favorite">Favorite</a>
+            <a href="index.html" >Digimon</a>
+            <a href="/favorite.html" class="favorite">Favorite</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i>
             </a>
