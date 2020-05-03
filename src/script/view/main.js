@@ -14,28 +14,25 @@ function main() {
                 showDigimon (responseJson)
                 
             })
-                .catch(error => {
-                console.log(error);
+                .catch(err => {
+                console.log(err);
             });
      };
      getDigimon();
 
-     const createDigimon = () => {
-       console.log("jalan gan")
-       fetch(`${digimonHeroku}/digimon`, {
+     const createDigimon = (digimon) => {
+       fetch(`${digimonHeroku}digimon`, {
          method: "POST",
          headers: {
-           "Content-Type": "application/json"
-         },
+          "Content-Type" : "application/json"
+        },
          body: JSON.stringify(digimon)
-       
        })
-       console.log(body)
        .then(response => {
          return response.json();
        })
        .then(responseJson => {
-         showResponseMessage(responseJson.message)
+         showResponseMessage("Digimon add to favorite")
        })
        .catch(error => {
          showResponseMessage(error)
@@ -78,35 +75,55 @@ function main() {
               }
                </style>
      
-               <div class="card">
-               <img id="digimonImg" value=${digimon.img} src="${digimon.img}" style="width:100%">
+               <div class="card card-digimon">
+               <img id="digimonImg" value=${digimon.img} class="digimon-img" src="${digimon.img}" style="width:100%">
                <div class="container">
-                 <p class="text-center" id="digimonLevel" value=${digimon.level}">${digimon.level}</p> 
-                 <h3 class="text-center" id="digimonName" value=${digimon.name}">${digimon.name}</h3> 
+                 <p class="text-center" id="digimonLevel" class="digimon-level" value=${digimon.level}">${digimon.level}</p> 
+                 <h3 class="text-center" id="digimonName" class="digimon-" value=${digimon.name}">${digimon.name}</h3> 
                   </div>
                 
-               <button id="createDigimon" type="button" class="btn btn-secondary button-create">Favorite</button>
+               <button id="${digimon.level}" name="${digimon.name}" value="${digimon.img}" type="button" class="btn btn-secondary button-create">Favorite</button>
                </div>
              `
+             
         });
 
 
-      document.createEventListener("DOMCcontentLoade", () => {
-        const digimonName = document.querySelector("#digimonName");
-        const digimonImg = document.querySelector("#digimonImg")
-        const digimonLevel = document.querySelector("$digimonLevel");
-        const buttonCreate = document.querySelectorAll("createDigimon")
-        buttonCreate.addEventListener("click", function() {
+      const buttons = document.querySelectorAll(".card-digimon");
+        const digimonName = document.getElementById("digimonName");
+        const digimonImg = document.getElementById("digimonImg")
+        const digimonLevel = document.getElementById("digimonLevel");
+      buttons.forEach(button => {
+        button.addEventListener("click", event => {
           const digimon = {
-            name:digimonName.value,
-            img:digimonImg.value,
-            level:digimonLevel.value 
-          };
+                  name:event.target.name,
+                  img:event.target.value,
+                  level:event.target.id 
+                
+          }
+          // const digimon = event.target.id
+          console.log(digimon)
+          
           createDigimon(digimon)
-        });
-
-       })
+        })
+      })
       }
+
+      // document.addEventListener = ("DOMContentLoaded", () => {
+      //   const digimonName = document.querySelector("#digimonName");
+      //   const digimonImg = document.querySelector("#digimonImg");
+      //   const digimonLevel = document.querySelector("#digimonLevel");
+      //   const buttonSave = document.querySelector("#buttonSave")
+
+      //   buttonSave.addEventListener("click", function () {
+      //     const digimon = {
+      //       name: digimonName.value,
+      //       img: digimonImg.value,
+      //       level: digimonLevel.value  
+      //     };
+      //     createDigimon(digimon)
+      //   })
+      // })
 
       const showResponseMessage = (message = "Check your internet connection") => {
         alert(message);

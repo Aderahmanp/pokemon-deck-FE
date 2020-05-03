@@ -105,15 +105,26 @@ class NavBar extends HTMLElement {
             }
 
           }
+
+          a.active {
+            background-color: #4CAF50
+          }
           </style>
 
           <div class="topnav" id="myTopnav">
-            <a href="index.html" >Digimon</a>
-            <a href="/favorite.html" class="favorite">Favorite</a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
+     
+               <a href="index.html" >Digimon</a>
+               <a href="/favorite.html" class="favorite">Favorite</a> 
+         
             </div>
+
+            <script>
+            $(document).ready(function() {
+              // get current URL path and assign 'active' class
+              var pathname = window.location.pathname;
+              $('.topnav > a[href="'+pathname+'"]').parent().addClass('active');
+            })
+            </script>
         `
     }
 }
